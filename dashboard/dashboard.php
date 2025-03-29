@@ -1,3 +1,11 @@
+<?php
+session_start(); // Inicia a sessão
+if (!isset($_SESSION['username'])) {
+    header('Location: ../login.php'); // Redireciona para a página de login se não estiver autenticado
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,33 +18,32 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark px-4" style="background-color: #111;">
         <div class="container-fluid justify-content-between">
-            <div class="d-flex align-items-center gap-2">
-                <img src="../img/estg.png" alt="Logo" style="width: 40px;">
+            <div class="d-flex align-items-center gap-3">
+                <img src="../img/estg_color.png" alt="Logo" style="width: 40px;">
                 <span class="fs-4 fw-bold text-white">SynDrive</span>
-            </div>
-
-            <div>
-                <a href="../logout.php" class="btn btn-outline-light">Logout</a>
+                <a href="../logout.php" class="btn btn-outline-light btn-sm ms-3">Terminar Sessão</a>
             </div>
         </div>
     </nav>
     <div class="container-fluid mt-4">
+        <!-- Linha dos Sensores -->
         <div class="row">
-            <div class="col-md-3 mb-3">
+            <div class="row">
+            <div class="col-md-4 mb-3">
                 <div class="card temperature-card position-relative">
                     <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h4 class="text-uppercase text-secondary">Bateria</h4>
-                        <i class="mdi mdi-battery fs-3 text-warning"></i>
+                        <h4 class="text-uppercase text-secondary">Temperatura</h4>
+                        <i class="mdi mdi-thermometer fs-3 text-danger"></i>
                     </div>
                     <div class="text-secondary mb-1">TEMPERATURA: 24°C</div>
                     <div class="d-flex align-items-baseline mb-2">
-                        <span class="display-3 fw-bold text-white">23°</span>
-                        <span class="fs-1 fw-bold text-white">C</span>
+                        <span class="display-3 fw-bold text-white">23</span>
+                        <span class="fs-1 fw-bold text-white">ºC</span>
                     </div>
                     <div class="text-white text-uppercase fw-semibold mb-3">Estado Normal</div>
                 </div>
             </div>
-            <div class="col-md-3 mb-3">
+            <div class="col-md-4 mb-3">
                 <div class="card position-relative">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <h4 class="text-uppercase text-secondary">Humidade</h4>
@@ -50,7 +57,7 @@
                     <div class="text-white text-uppercase fw-semibold mb-3">Estado Normal</div>
                 </div>
             </div>
-            <div class="col-md-3 mb-3">
+            <div class="col-md-4 mb-3">
                 <div class="card position-relative">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <h4 class="text-uppercase text-secondary">Pressão</h4>
@@ -64,6 +71,7 @@
                     <div class="text-white text-uppercase fw-semibold mb-3">Estado Normal</div>
                 </div>
             </div> 
+            <!-- Linha dos Atuadores -->
             <div class="col-md-3 mb-3">
                 <div class="card position-relative">
                     <div class="d-flex justify-content-between align-items-start mb-2">
@@ -76,6 +84,18 @@
                         <span class="fs-1 fw-bold text-white">km/h</span>
                     </div>
                     <div class="text-white text-uppercase fw-semibold mb-3">Em Espera</div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card position-relative text-center text-white bg-secondary p-4 h-100">
+                    <h4 class="text-uppercase mb-3">Atuador 2</h4>
+                    <p>Pronto para implementar</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card position-relative text-center text-white bg-secondary p-4 h-100">
+                    <h4 class="text-uppercase mb-3">Atuador 3</h4>
+                    <p>Pronto para implementar</p>
                 </div>
             </div>
         </div>

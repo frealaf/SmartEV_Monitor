@@ -24,7 +24,7 @@ The goal is to simulate an IoT-connected cockpit using PHP, HTML, CSS, and Boots
 Syndrive/
 ├── api/            # PHP endpoints (future integration)
 ├── dashboard/      # Main interface (dashboard.php)
-├── sensores/       # Folders for simulated sensor values
+├── sensores/       # Folders for simulated sensor values (to add)
 │   ├── temperatura/
 │   ├── humidade/
 │   └── ...
