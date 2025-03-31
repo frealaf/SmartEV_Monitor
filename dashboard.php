@@ -13,7 +13,7 @@ if (!isset($_SESSION['username'])) {
     <title>SynDrive Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark px-4" style="background-color: #111;">
@@ -74,16 +74,16 @@ if (!isset($_SESSION['username'])) {
             <!-- Linha dos Atuadores -->
             <div class="col-md-3 mb-3">
                 <div class="card position-relative">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h4 class="text-uppercase text-secondary">Velocidade</h4>
-                        <i class="mdi mdi-speedometer fs-3 text-success"></i>
+                    <div class="text-center mb-3">
+                        <h4 class="text-uppercase text-secondary">TRAVAGEM AUTOMÁTICA</h4>
+                            <i class="mdi mdi-car-brake-abs fs-1 text-danger"></i>
+                        </div>
+                    <div class="text-white text-uppercase fw-semibold mb-3">
+                     Estado: <span class="badge bg-warning text-dark">Assistido</span>
                     </div>
-                    <div class="text-secondary mb-1">VELOCIDADE: -- km/h</div>
                     <div class="d-flex align-items-baseline mb-2">
-                        <span class="display-3 fw-bold text-white">--</span>
-                        <span class="fs-1 fw-bold text-white">km/h</span>
+
                     </div>
-                    <div class="text-white text-uppercase fw-semibold mb-3">Em Espera</div>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
@@ -141,5 +141,6 @@ if (!isset($_SESSION['username'])) {
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
