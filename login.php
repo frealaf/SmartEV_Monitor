@@ -1,38 +1,31 @@
 <?php
-session_start(); // permite guardar dados na sessão
+ob_start();
+session_start();
 
-// Redireciona se já estiver autenticado
-if (isset($_SESSION['username'])) {
-    header('Location: dashboard/dashboard.php');
-    exit();
-}
+$utilizadores = [
+    'goncalo' => '5678',
+    'pedro' => '1234'
+];
 
-$error= '';
+$erro_login= false;
 
- if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Verifica se o utilizador já está autenticado
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-
-    $file = fopen("users.txt", "r");
-
-    if ($file) {
-        while (($line = fgets($file)) !== false) {
-            $credenciais = explode(":", trim($line));
-            if (count($credenciais) == 2) {
-                $user = $credenciais[0]; // username
-                $pass = $credenciais[1]; // password
-                if ($username == $user && $password == $pass) {
-                    $_SESSION['username'] = $username;
-                    
-                    fclose($file);
-                    header('Location: dashboard/dashboard.php');
-                    exit();
-                }
-            }
-        }
-        fclose($file);
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+    // Verifica se o utilizador existe e se a palavra-passe está correta
+    if (isset($utilizadores[$username]) && $password === $utilizadores[$username]) {
+        // credenciais validas
+        $_SESSION['username'] = $username; // Armazena o nome de utilizador na sessão
+        header('Location: dashboard.php'); 
+        exit();
+    } else {
+        // credenciais invalidas
+        $erro_login = true;
     }
-    $error = "Nome de utilizador ou palavra-passe inválidos.";
 }
 ?>
 
@@ -40,28 +33,38 @@ $error= '';
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Login - SynDrive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/login.css?id=4">
+    <title>Login - SmartEV Monitor</title>
 </head>
-<body>
-    <h2>Login SynDrive</h2>
-
-    <!-- Mostra mensagem de erro se existir -->
-    <?php if ($error): ?>
-        <p style="color: red;"><?php echo $error; ?></p>
-    <?php endif; ?>
-
-    <!-- Formulário de login -->
-    <form method="post">
-        <label for="username">Utilizador:</label><br>
-        <input type="text" name="username" id="username" required><br><br>
-
-        <label for="password">Palavra-passe:</label><br>
-        <input type="password" name="password" id="password" required><br><br>
-
-        <button type="submit">Entrar</button>
-    </form>
+<body class="login-body">
+    <div class="login-wrapper">
+        <div class="logo-container">
+            <img src="img/logo1.png" alt="SmartEV Logo" class="logo">
+        </div>
+    <div class="login-container">
+        <div class="login-box">
+            <h1 class="login-title">SmartEV Monitor</h1>
+            <?php if ($erro_login): ?>
+                <div class="alert alert-danger" role="alert">
+                    Utilizador ou palavra-passe incorretos.
+                </div>
+            <?php endif; ?>
+            <form method="POST" action="login.php" autocomplete="off" class="login-form">
+                <div class="form-group">
+                    <label for="username" class="form-label">Utilizador</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Palavra-passe</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-danger w-100">Entrar</button> <!-- alterar botão de login -->
+            </form>
+        </div>
+    </div>
 </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<?php ob_end_flush(); ?>
 </html>
-
-
- 

@@ -1,7 +1,7 @@
 <?php
 session_start(); // Inicia a sessão
 if (!isset($_SESSION['username'])) {
-    header('Location: ../login.php'); // Redireciona para a página de login se não estiver autenticado
+    header('Location: login.php'); // Redireciona para a página de login se não estiver autenticado
     exit();
 }
 ?>
@@ -11,136 +11,91 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <title>SynDrive Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/dashboard.css?id=2">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark px-4" style="background-color: #111;">
-        <div class="container-fluid justify-content-between">
-            <div class="d-flex align-items-center gap-3">
-                <img src="../img/estg_color.png" alt="Logo" style="width: 40px;">
-                <span class="fs-4 fw-bold text-white">SynDrive</span>
-                <a href="../logout.php" class="btn btn-outline-light btn-sm ms-3">Terminar Sessão</a>
-            </div>
-        </div>
-    </nav>
-    <div class="container-fluid mt-4">
-        <!-- Linha dos Sensores -->
+<body class="dashboard-background">
+<nav class="navbar-dashboard">
+  <div class="navbar-left">
+    <img src="img/logo.png" alt="SynDrive Logo" class="navbar-logo">
+  </div>
+  <div class="navbar-right">
+    <a class="nav-link logout-link" href="logout.php">
+        <i class="mdi mdi-logout"></i> Terminar Sessão
+    </a>
+  </div>
+</nav>
+<header class="project-title">
+    <h1>SmartEV Monitor</h1>
+</header>
+    <div class="container">
         <div class="row">
-            <div class="row">
-            <div class="col-md-4 mb-3">
-                <div class="card temperature-card position-relative">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h4 class="text-uppercase text-secondary">Temperatura</h4>
-                        <i class="mdi mdi-thermometer fs-3 text-danger"></i>
+            <div class="col-md-4">
+                <div class="sensor-card">
+                    <h4 class="card-title">POTÊNCIA</h4>
+                    <div class="sensor-status-block">
+                        <span class="sensor-value">
+                            <?php
+                            $velocidade = @file_get_contents("api/files/potencia/valor.txt");
+                            echo $velocidade ? htmlspecialchars(trim($velocidade)) . ' km/h' : 'N/A';
+                            ?>
+                        </span>
+                        <i class="mdi mdi-speedometer"></i>
                     </div>
-                    <div class="text-secondary mb-1">TEMPERATURA: 24°C</div>
-                    <div class="d-flex align-items-baseline mb-2">
-                        <span class="display-3 fw-bold text-white">23</span>
-                        <span class="fs-1 fw-bold text-white">ºC</span>
-                    </div>
-                    <div class="text-white text-uppercase fw-semibold mb-3">Estado Normal</div>
+                    <p class="sensor-description">Velocidade atual do veículo</p>
+                    <a href="historico.php?sensor=potencia" class="btn-warning">Histórico</a>
+                    <?php
+                    $hora_potencia = @file_get_contents("api/files/potencia/hora.txt");
+                    echo '<p class="sensor-mode">Atualizado em: ' . ($hora_potencia ? htmlspecialchars(trim($hora_potencia)) : 'N/A') . '</p>';
+                    ?>
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
-                <div class="card position-relative">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h4 class="text-uppercase text-secondary">Humidade</h4>
-                        <i class="mdi mdi-water-percent fs-3 text-info"></i>
-                    </div>
-                    <div class="text-secondary mb-1">HUMIDADE: 50%</div>
-                    <div class="d-flex align-items-baseline mb-2">
-                        <span class="display-3 fw-bold text-white">50</span>
-                        <span class="fs-1 fw-bold text-white">%</span>
-                    </div>
-                    <div class="text-white text-uppercase fw-semibold mb-3">Estado Normal</div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <div class="card position-relative">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h4 class="text-uppercase text-secondary">Pressão</h4>
-                        <i class="mdi mdi-weather-windy-variant fs-3 text-primary"></i>
-                    </div>
-                    <div class="text-secondary mb-1">PRESSÃO: 1013 hPa</div>
-                    <div class="d-flex align-items-baseline mb-2">
-                        <span class="display-3 fw-bold text-white">1013</span>
-                        <span class="fs-1 fw-bold text-white">hPa</span>
-                    </div>
-                    <div class="text-white text-uppercase fw-semibold mb-3">Estado Normal</div>
-                </div>
-            </div> 
-            <!-- Linha dos Atuadores -->
-            <div class="col-md-3 mb-3">
-                <div class="card position-relative">
-                    <div class="text-center mb-3">
-                        <h4 class="text-uppercase text-secondary">TRAVAGEM AUTOMÁTICA</h4>
-                            <i class="mdi mdi-car-brake-abs fs-1 text-danger"></i>
-                        </div>
-                    <div class="text-white text-uppercase fw-semibold mb-3">
-                     Estado: <span class="badge bg-warning text-dark">Assistido</span>
-                    </div>
-                    <div class="d-flex align-items-baseline mb-2">
 
+            <div class="col-md-4">
+                <div class="sensor-card">
+                    <h4 class="card-title">TEMPERATURA</h4>
+                    <div class="sensor-status-block">
+                        <span class="sensor-value">
+                            <?php
+                            $temperatura = @file_get_contents("api/files/temperatura/valor.txt");
+                            echo $temperatura ? htmlspecialchars(trim($temperatura)) . ' °C' : 'N/A';
+                            ?>
+                        </span>
+                        <i class="mdi mdi-thermometer"></i>
                     </div>
+                    <p class="sensor-description">Temperatura atual da bateria</p>
+                    <a href="historico.php?sensor=temperatura" class="btn-warning">Histórico</a>
+                    <?php
+                    $hora_temperatura = @file_get_contents("api/files/temperatura/hora.txt");
+                    echo '<p class="sensor-mode">Atualizado em: ' . ($hora_temperatura ? htmlspecialchars(trim($hora_temperatura)) : 'N/A') . '</p>';
+                    ?>
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
-                <div class="card position-relative text-center text-white bg-secondary p-4 h-100">
-                    <h4 class="text-uppercase mb-3">Atuador 2</h4>
-                    <p>Pronto para implementar</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <div class="card position-relative text-center text-white bg-secondary p-4 h-100">
-                    <h4 class="text-uppercase mb-3">Atuador 3</h4>
-                    <p>Pronto para implementar</p>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="card bg-dark text-white">
-                    <div class="card-body">
-                        <h5 class="card-title">Tabela de Sensores</h5>
-                        <div class="table-responsive">
-                            <table class="table table-dark table-borderless align-middle">
-                                <thead class="text-secondary">
-                                    <tr>
-                                        <th>Tipo de Dispositivo</th>
-                                        <th>Valor</th>
-                                        <th>Data de Atualização</th>
-                                        <th>Estado Alertas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Temperatura</td>
-                                        <td>45°C</td>
-                                        <td>2024/03/10 14:31</td>
-                                        <td><span class="badge bg-danger px-3 py-2 rounded-pill">Elevada</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Humidade</td>
-                                        <td>70%</td>
-                                        <td>2024/03/10 14:31</td>
-                                        <td><span class="badge bg-warning text-dark px-3 py-2 rounded-pill">Moderada</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Led Arduino</td>
-                                        <td>On</td>
-                                        <td>2024/03/10 14:31</td>
-                                        <td><span class="badge bg-success px-3 py-2 rounded-pill">Normal</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+
+            <div class="col-md-4">
+                <div class="sensor-card">
+                    <h4 class="card-title">CARGA DA BATERIA</h4>
+                    <div class="sensor-status-block">
+                        <span class="sensor-value">
+                            <?php
+                            $bateria = @file_get_contents("api/files/bateria/valor.txt");
+                            echo $bateria ? htmlspecialchars(trim($bateria)) . '%' : 'N/A';
+                            ?>
+                        </span>
+                        <i class="mdi mdi-battery-80"></i>
                     </div>
+                    <p class="sensor-description">Carga atual da bateria</p>
+                    <a href="historico.php?sensor=bateria" class="btn-warning">Histórico</a>
+                    <?php
+                    $hora_bateria = @file_get_contents("api/files/bateria/hora.txt");
+                    echo '<p class="sensor-mode">Atualizado em: ' . ($hora_bateria ? htmlspecialchars(trim($hora_bateria)) : 'N/A') . '</p>';
+                    ?>
                 </div>
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
