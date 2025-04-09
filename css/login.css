@@ -1,5 +1,4 @@
 body {
-    background-color: red;
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -47,9 +46,6 @@ body {
     margin-bottom: 1rem;
 }
 
-.form-label {
-    color: #CCCCCC;
-}
 
 .btn-danger {
     background-color: #FFDD57;
@@ -59,12 +55,6 @@ body {
 .btn-danger:hover {
     background-color: darkgoldenrod;
     color: #000;
-}
-
-.alert-danger {
-    background-color: #dc3545;
-    border: none;
-    color: #fff;
 }
 
 .form-group {

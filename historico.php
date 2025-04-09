@@ -1,7 +1,7 @@
 <?php
 session_start(); // Inicia a sessão
 if (!isset($_SESSION['username'])) {
-    header('Location: login.php'); // Redireciona para a página de login se não estiver autenticado
+    header('Location: index.php'); // Redireciona para a página de login se não estiver autenticado
     exit();
 }
 ?>
@@ -10,10 +10,10 @@ if (!isset($_SESSION['username'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SynDrive Dashboard</title>
+    <title>SmartEV - Log</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="css/dashboard.css?id=6">
+    <link rel="stylesheet" href="css/dashboard.css?id=9">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="dashboard-background">
@@ -63,9 +63,11 @@ if (!isset($_SESSION['username'])) {
             }
             ?>
         </div> <!-- fecha history-card -->
-        <div class="grafico-card">
-            <canvas id="graficoSensor"></canvas>
-        </div>
+            <div class="card-graph">
+                <div class="card-body">
+                    <canvas id="graficoSensor"></canvas>
+                </div>
+            </div>
     </div> <!-- fecha wrapper-historico -->
 </div>
 
