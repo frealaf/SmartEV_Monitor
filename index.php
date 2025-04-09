@@ -2,14 +2,7 @@
 ob_start();
 session_start();
 
-// Passwords:
-// goncalo => 5678
-// pedro => 1234
-
-$utilizadores = [
-    'goncalo' => '$2y$10$n4DXdJMpCA2M3XInGYt2GulmpaAjODiUQa8z4NyUKL4l.kPdEMZtq', // 5678
-    'pedro' => '$2y$10$FvKxU0w7ZVFemke4b./qo.6WduzgV/Ot/c84gEgxgs/Og/WBqU6gy'  // 1234
-];
+require_once 'users.php';
 
 $erro_login= false;
 
@@ -43,10 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login - SmartEV Monitor</title>
 </head>
 <body class="login-body">
+    <!-- Container principal do formulário de login -->
     <div class="login-wrapper">
         <div class="logo-container">
             <img src="img/logo1.png" alt="SmartEV Logo" class="logo">
         </div>
+        <!-- Formulário de login -->
         <div class="login-container">
             <div class="login-box">
                 <h1 class="login-title">SmartEV Monitor</h1>
@@ -64,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="password" class="form-label">Palavra-passe</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                     </div>
-                    <button type="submit" class="btn btn-danger w-100">Entrar</button> <!-- alterar botão de login -->
+                    <button type="submit" class="btn btn-danger w-100">Entrar</button>
                 </form>
             </div> <!-- fecha login-box -->
         </div> <!-- fecha login-container -->

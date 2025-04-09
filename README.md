@@ -1,115 +1,106 @@
-# SynDrive 🚘
+# SmartEV Monitor ⚡🚗
 
-**SynDrive** is a modern web-based dashboard interface for autonomous vehicles, inspired by real in-car digital panels.
-
-It visually monitors real-time sensor data such as battery temperature, humidity, pressure, and velocity.  
-The goal is to simulate an IoT-connected cockpit using PHP, HTML, CSS, and Bootstrap.
+**SmartEV Monitor** é uma aplicação web interativa que simula o painel digital de um carro elétrico, utilizando tecnologias web e simulação de dados via ficheiros `.txt`. O objetivo é representar um cenário realista de um sistema IoT com sensores e atuadores monitorizados em tempo real.
 
 ---
 
-## 🧠 Key Features
+## 🧩 Funcionalidades Principais
 
-- Dark theme with modern UI components
-- Real-time sensor status display
-- Status-based alert levels (Normal, Moderate, Critical)
-- Responsive layout using Bootstrap 5
-- Material Design Icons integration
-- Simulated sensor data via `.txt` files (can be extended to real APIs)
+- Interface moderna e responsiva 
+- Leitura de sensores em tempo real (temperatura, potência e bateria)
+- Visualização de atuadores (portas, luzes, segurança)
+- Representação gráfica dos valores históricos (Chart.js)
+- Separação visual entre sensores e atuadores
+- Histórico interativo com tabela + gráfico
+- API local em PHP para registo de valores
 
 ---
 
-## 📁 Project Structure
+## 🗂️ Estrutura do Projeto
 
 ```
-Syndrive/
-├── api/            # PHP endpoints (future integration)
-├── dashboard/      # Main interface (dashboard.php)
-├── sensores/       # Folders for simulated sensor values (to add)
-│   ├── temperatura/
-│   ├── humidade/
-│   └── ...
-├── css/
-│   └── style.css   # Custom styles
-├── img/            # Icons and logos
-├── js/             # (Optional) JavaScript scripts
-├── index.php       # Landing or login page
-├── logout.php      # Ends the user session
-└── README.md
+SmartEV/
+├── api/              # Endpoints para registo de dados
+│   └── api.php
+├── css/              # Estilos personalizados
+│   └── dashboard.css
+    └── login.css
+├── img/              # Logotipos e imagens
+├── index.php         # Página de login
+├── logout.php        # Encerrar sessão
+├── dashboard.php     # Painel principal com sensores e atuadores
+├── historico.php     # Página de histórico com gráfico
+├── README.md         # Documentação do projeto
+└── api/files/        # Simulação de sensores (valores e logs)
+    ├── temperatura/
+    ├── potencia/
+    ├── bateria/
+    └── ...
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tecnologias Utilizadas
 
-- HTML5
-- CSS3 / Bootstrap 5
-- PHP 8.x
-- Material Design Icons (CDN)
-- Simulated IoT with `.txt` values
+- **Frontend:** HTML5, CSS3, Bootstrap 5, Chart.js, Material Design Icons
+- **Backend:** PHP 8.x
+- **Simulação IoT:** Leitura e escrita em ficheiros `.txt` locais
 
 ---
 
-## 💻 Getting Started
+## 🚀 Como Executar Localmente
 
-To run this project on your local machine:
-
-### 1. Clone the repository:
+### 1. Clonar o repositório
 ```bash
-git clone https://github.com/your-username/Syndrive.git
-cd Syndrive
+git clone https://github.com/seu-usuario/SmartEV.git
+cd SmartEV
 ```
 
-### 2. Set up your development environment:
-Make sure you're using a local PHP server like **MAMP**, **XAMPP**, **WAMP**, or PHP built-in server.
-
-If using MAMP, move the project to:
+### 2. Colocar o projeto no ambiente local
+Se estiveres a usar MAMP:
 ```
-/Applications/MAMP/htdocs/Syndrive
+/Applications/MAMP/htdocs/SmartEV
 ```
 
-### 3. Open in browser:
-Access via your browser:
+### 3. Aceder via navegador
 ```
-http://localhost/Syndrive/dashboard/dashboard.php
+http://localhost:8888/SmartEV/index.php
 ```
 
 ---
 
-## 👥 Collaboration
+## 👨‍💻 Colaboração
 
-If you're collaborating:
-
-- Clone the repo using `git clone`
-- Always pull before you start working:
+- Faz pull antes de começares:
   ```bash
   git pull
   ```
-- After making your changes:
+- Após alterações:
   ```bash
   git add .
-  git commit -m "Descrição clara da alteração"
+  git commit -m "Descrição da alteração"
   git push
   ```
 
 ---
 
-## 🔒 Session & Security
+## 🔐 Sessões & Segurança
 
-- Session management is handled in `index.php` and `logout.php`
-- Authentication logic can be extended further
-- This project is local by default and not meant to be exposed online as-is
-
----
-
-## 📌 Future Improvements
-
-- Live connection to sensors (ESP32, Raspberry Pi, etc.)
-- Admin/user roles
-- Chart visualizations
-- API layer
+- A autenticação é gerida por sessão (`index.php` e `logout.php`)
+- Os dados são simulados e não devem ser expostos num servidor online
 
 ---
 
-## 📝 License
+## 🔮 Melhorias Futuras
 
-MIT License — feel free to use and modify with credit.
+- Integração com sensores reais (Arduino, Raspberry Pi)
+- Gestão de utilizadores (admin, normal)
+- Painel de controlo remoto com comandos
+- Exportação de dados (CSV, JSON)
+- Alertas e notificações
+
+---
+
+## 📝 Licença
+
+MIT — podes usar e modificar com atribuição de crédito.

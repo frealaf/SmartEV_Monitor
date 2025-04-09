@@ -1,2 +1,0 @@
-pedro:1234
-goncalo:5678

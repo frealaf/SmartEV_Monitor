@@ -217,3 +217,26 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* ============================== */
+/*            FOOTER             */
+/* ============================== */
+
+.dashboard-footer {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 4rem;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+}
+
+.dashboard-footer a {
+    color: #FFDD57;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dashboard-footer a:hover {
+    color: #ffffff;
+}

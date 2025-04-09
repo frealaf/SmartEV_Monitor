@@ -1,5 +1,6 @@
 <?php
-session_start(); // Inicia a sessão
+// Inicia a sessão e verifica se o utilizador está autenticado
+session_start(); 
 if (!isset($_SESSION['username'])) {
     header('Location: index.php'); // Redireciona para a página de login se não estiver autenticado
     exit();
@@ -13,10 +14,11 @@ if (!isset($_SESSION['username'])) {
     <title>SmartEV - Log</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="css/dashboard.css?id=9">
+    <link rel="stylesheet" href="css/dashboard.css?id=2">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="dashboard-background">
+<!-- NAVBAR -->
 <nav class="navbar-dashboard">
   <div>
     <img src="img/logo.png" alt="SynDrive Logo" class="navbar-logo">
@@ -25,19 +27,24 @@ if (!isset($_SESSION['username'])) {
     <a class="nav-link logout-link" href="logout.php">Sair</a>
   </div>
 </nav>
+<!-- CONTEÚDO PRINCIPAL: Histórico de sensores -->
 <div class="container">
     <div class="wrapper-historico">
         <div class="history-card">
             <a href="dashboard.php" class="btn btn-warning mb-4">← Voltar ao Dashboard</a>
+            <h3 class="text-warning mb-3">Histórico de: <?= htmlspecialchars($_GET['sensor']) ?></h3>
             <?php
+            // Verifica se o parâmetro 'sensor' foi passado plo URL
             if (isset($_GET['sensor'])) {
                 $ficheiro = "api/files/" . $_GET['sensor'] . "/log.txt";
 
+                // Verifica se o ficheiro de log existe para o sensor
                 if (file_exists($ficheiro)) {
                     echo "<table class='sensor-table'>";
                     echo "<thead><tr><th class='col-title'>Data</th><th class='col-title'>Valor</th></tr></thead>";
                     echo "<tbody>";
 
+                    // Lê cada linha do ficheiro, separa por ponto e vírgula e coloca na tabela
                     $fp = fopen($ficheiro, "r");
                     while (($linha = fgets($fp)) !== false) {
                         $valores = explode(";", trim($linha));
@@ -49,7 +56,7 @@ if (!isset($_SESSION['username'])) {
 
                     echo "</tbody></table>";
 
-                    ?>
+                    ?>                    
                     <script>
                         const labels = <?php echo json_encode(array_column(array_map(fn($l) => explode(";", trim($l)), file($ficheiro)), 0)); ?>;
                         const dados = <?php echo json_encode(array_map('floatval', array_column(array_map(fn($l) => explode(";", trim($l)), file($ficheiro)), 1))); ?>;
@@ -72,6 +79,7 @@ if (!isset($_SESSION['username'])) {
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Script para gerar o gráfico com Chart.js - tem que ser melhor estudado -->
 <script>
     const ctx = document.getElementById('graficoSensor')?.getContext('2d');
     if (ctx && typeof labels !== 'undefined' && typeof dados !== 'undefined') {
