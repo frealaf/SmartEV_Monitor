@@ -14,9 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //print_r($_POST);
     //echo "</pre>";
     // Verifica se o utilizador existe e se a palavra-passe está correta
-    if (isset($utilizadores[$username]) && password_verify($password, $utilizadores[$username])) {
+    if (isset($utilizadores[$username]) && password_verify($password, $utilizadores[$username]['password'])) {
         // credenciais validas
         $_SESSION['username'] = $username; // Armazena o nome de utilizador na sessão
+        $_SESSION['tipo'] = $utilizadores[$username]['tipo']; // Armazena o tipo de utilizador na sessão
         header('Location: dashboard.php'); 
         exit();
     } else {

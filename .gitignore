@@ -1,0 +1,18 @@
+*.log
+*.DS_Store
+*.tmp
+*.swp
+
+# Ignorar ficheiros de sensores e imagens captadas
+api/files/
+api/images/
+
+# Ignorar ficheiros Python
+**/*.py
+
+# Ignorar ficheiros Arduino
+**/*.ino
+
+# Pastas comuns a ignorar
+node_modules/
+vendor/

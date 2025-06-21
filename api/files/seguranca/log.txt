@@ -1,7 +1,79 @@
-2025-03-24 13:35:00;fechado
-2025-03-24 13:35:00;fechado
-2025-03-24 13:35:00;fechado
-2025-03-24 13:35:00;fechado
-2025-03-24 13:35:00;fechado
-2025-03-24 13:35:00;fechado
-2025-03-24 13:35:00;fechado
+
+2025-06-15 07:32:57 ; Trancado
+2025-06-15 07:33:01 ; Destrancado
+2025-06-15 07:33:03 ; Trancado
+2025-06-15 07:33:04 ; Destrancado
+2025-06-15 07:33:05 ; Trancado
+2025-06-15 07:33:07 ; Destrancado
+2025-06-15 07:33:08 ; Trancado
+2025-06-15 07:33:08 ; Destrancado
+2025-06-15 07:33:26 ; Trancado
+2025-06-15 07:33:26 ; Destrancado
+2025-06-15 07:33:27 ; Trancado
+2025-06-15 07:33:28 ; Destrancado
+2025-06-15 07:33:28 ; Trancado
+2025-06-15 07:33:28 ; Destrancado
+2025-06-15 07:33:28 ; Trancado
+2025-06-15 07:33:28 ; Destrancado
+2025-06-15 07:33:28 ; Trancado
+2025-06-15 07:33:28 ; Destrancado
+2025-06-15 07:33:28 ; Trancado
+2025-06-15 07:33:29 ; Destrancado
+2025-06-15 07:33:30 ; Trancado
+2025-06-15 07:33:30 ; Destrancado
+2025-06-15 07:33:30 ; Trancado
+2025-06-15 07:33:30 ; Destrancado
+2025-06-15 07:33:43 ; Trancado
+2025-06-15 07:33:43 ; Destrancado
+2025-06-19 02:01:32 ; Trancado
+2025-06-19 02:01:32 ; Destrancado
+2025-06-19 02:01:32 ; Trancado
+2025-06-19 02:01:32 ; Destrancado
+2025-06-19 02:01:32 ; Trancado
+2025-06-19 02:01:32 ; Destrancado
+2025-06-19 02:01:35 ; Trancado
+2025-06-19 02:01:39 ; Destrancado
+2025-06-19 02:01:42 ; Trancado
+2025-06-19 02:01:45 ; Destrancado
+2025-06-19 02:01:45 ; Trancado
+2025-06-19 02:01:45 ; Destrancado
+2025-06-19 02:01:48 ; Trancado
+2025-06-19 02:01:51 ; Destrancado
+2025-06-19 02:01:51 ; Trancado
+2025-06-19 02:01:51 ; Destrancado
+2025-06-19 18:25:50 ; Trancado
+2025-06-19 18:25:53 ; Destrancado
+2025-06-19 18:25:53 ; Trancado
+2025-06-19 18:25:53 ; Destrancado
+2025-06-19 18:25:55 ; Trancado
+2025-06-19 18:25:56 ; Destrancado
+2025-06-19 18:25:57 ; Trancado
+2025-06-19 18:25:57 ; Destrancado
+2025-06-19 18:26:00 ; Trancado
+2025-06-19 18:26:02 ; Destrancado
+2025-06-19 18:26:03 ; Trancado
+2025-06-19 18:26:04 ; Destrancado
+2025-06-19 18:26:12 ; Trancado
+2025-06-19 18:26:12 ; Destrancado
+2025-06-19 18:26:12 ; Trancado
+2025-06-19 18:26:13 ; Destrancado
+2025-06-19 18:26:13 ; Trancado
+2025-06-19 18:26:13 ; Destrancado
+2025-06-19 18:26:13 ; Trancado
+2025-06-19 18:26:14 ; Destrancado
+2025-06-19 18:26:21 ; Trancado
+2025-06-19 18:26:22 ; Destrancado
+2025-06-19 18:26:22 ; Trancado
+2025-06-19 18:26:22 ; Destrancado
+2025-06-19 18:26:27 ; Trancado
+2025-06-19 18:26:27 ; Destrancado
+2025-06-19 18:26:28 ; Trancado
+2025-06-19 18:26:29 ; Destrancado
+2025-06-19 18:26:30 ; Trancado
+2025-06-19 18:26:31 ; Destrancado
+2025-06-19 18:47:02 ; Trancado
+2025-06-19 18:47:04 ; Destrancado
+2025-06-19 18:47:08 ; Trancado
+2025-06-19 18:47:10 ; Destrancado
+2025-06-19 18:47:14 ; Trancado
+2025-06-19 18:47:16 ; Destrancado

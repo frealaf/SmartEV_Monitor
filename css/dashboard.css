@@ -164,7 +164,7 @@ body {
 
 /* usado em historico.php */
 .history-card {
-    width: 66.666%; 
+    width: 66.666%;
     max-width: 800px;
     margin: 2rem auto 0 auto;
     background-color: rgba(255, 255, 255, 0.1);
@@ -208,14 +208,6 @@ body {
     background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* usado em historico.php */
-.card-graph {
-    background-color: rgba(0, 0, 0, 0.5); 
-    width: 100%;
-    margin: 2rem auto 0 auto; 
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
 
 /* ============================== */
 /*            FOOTER             */
@@ -239,4 +231,104 @@ body {
 
 .dashboard-footer a:hover {
     color: #ffffff;
+}
+
+/* ============================== */
+/*            HISTÓRICO           */
+/* ============================== */
+
+.pagination-links {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.pagination-links a {
+    min-width: 40px;
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.pagination-links a.btn-outline-warning:hover {
+    background-color: #ffd700;
+    color: #000;
+    border-color: #ffd700;
+}
+
+.card-graph {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    margin: 2rem auto 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+.pagination-links {
+    margin-top: 15px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    /* scroll horizontal automático se necessário */
+    white-space: nowrap;
+    /* impede que os links quebrem para a linha de baixo */
+    max-width: 100%;
+    scrollbar-width: thin;
+    /* Firefox */
+}
+
+.pagination-links::-webkit-scrollbar {
+    height: 6px;
+    /* altura do scroll no Chrome/Safari */
+}
+
+.pagination-links::-webkit-scrollbar-thumb {
+    background-color: #FFD700;
+    border-radius: 4px;
+}
+
+.pagination-links a {
+    display: inline-block;
+    min-width: 40px;
+    padding: 8px 12px;
+    margin: 2px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    flex: 0 0 auto;
+    /* impede que os botões se expandam ou encolham */
+}
+
+.history-card .pagination-links {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 5px;
+}
+
+.alerta-sucesso {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 5px;
+    border: 1px solid #c3e6cb;
+    font-weight: bold;
+    animation: fadein 0.5s;
+    text-align: center;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
