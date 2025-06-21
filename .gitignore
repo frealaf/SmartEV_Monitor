@@ -16,3 +16,5 @@ api/images/
 # Pastas comuns a ignorar
 node_modules/
 vendor/
+users.php
+hash_generator.php
